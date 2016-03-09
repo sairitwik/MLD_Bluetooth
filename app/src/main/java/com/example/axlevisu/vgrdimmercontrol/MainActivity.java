@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        tvRating = (TextView) findViewById(R.id.loadText1);
         seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        btnSend = (Button) findViewById(R.id.loadButton1);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
