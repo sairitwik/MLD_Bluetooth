@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="5"
+        android:text="0"
         android:textSize="22sp"
         android:layout_height="wrap_content" />
 
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:max="16"
-        android:progress="5"/>
+        android:max="15"
+        android:progress="0"/>
 </LinearLayout>
 </ScrollView>

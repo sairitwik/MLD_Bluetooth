@@ -6,4 +6,8 @@
         android:id="@+id/item_settings"
         android:title="Settings"
         />
+    <item
+        android:id="@+id/device_connect"
+        android:title="Connect to device"
+        />
 </menu>
