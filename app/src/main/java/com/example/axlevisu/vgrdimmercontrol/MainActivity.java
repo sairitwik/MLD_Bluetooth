@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     ConnectedThread connectedThread = new ConnectedThread(
                             (BluetoothSocket) msg.obj);
 
-                    if(connectedThread!=null){Toast.makeText(getApplicationContext(), "CONNECTED", 0).show();}
+                    if(connectedThread!=null){Toast.makeText(getApplicationContext(), "CONNECTED", Toast.LENGTH_SHORT).show();}
+                    else{Toast.makeText(getApplicationContext(), "CONNECTION FAILED", Toast.LENGTH_SHORT).show();}
 //                    tvRating = (TextView) findViewById(R.id.loadText1);
 //                    String s = tvRating.getText().toString();
 //                    connectedThread.write(s.getBytes());
@@ -62,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
                             (BluetoothSocket) msg.obj);
                     tvRating = (TextView) findViewById(R.id.loadText1);
                     String s = tvRating.getText().toString();
-                    connectionThread.write(s.getBytes());
+                    int intvalue = Integer.parseInt(s);
+                    String hexvalue = Integer.toHexString(intvalue);
+                    connectionThread.write(hexvalue.getBytes());
                     break;
 //                    connectionThread.cancel();
 //                case MESSAGE_READ:
@@ -126,15 +129,16 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) { }
         }
     }
-
-
+//    public void convert_to_hex(){
+//
+//    }
     private void manageConnectedSocket(BluetoothSocket mSocket)
     {   final BluetoothSocket mmSocket = mSocket;
         mHandler.obtainMessage(SUCCESS_CONNECT, mSocket).sendToTarget();
         btnSend = (Button) findViewById(R.id.loadButton1);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//TODO: Change it to SeekListener
 
                 if (mBluetoothAdapter == null) {
                     // Device does not support Bluetooth
@@ -180,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             mmOutStream = tmpOut;
         }
 
-        public void run() {
+        public void run() {//TODO: Complete it later
 //            byte[] buffer = new byte[1024];  // buffer store for the stream
 //            int bytes; // bytes returned from read()
 //
@@ -200,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
         /* Call this from the main activity to send data to the remote device */
         public void write(byte[] bytes) {
             try {
+//                Toast.makeText(getApplicationContext(),bytes,Toast.LENGTH_SHORT)
                 mmOutStream.write(bytes);
             } catch (IOException e) { }
         }
@@ -248,50 +253,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-//        btnSend = (Button) findViewById(R.id.loadButton1);
-//        btnSend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (mBluetoothAdapter == null) {
-//                    // Device does not support Bluetooth
-//                    Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
-//
-//                }
-//                if (!mBluetoothAdapter.isEnabled()) {
-//                    Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
-//                }
-//                //                    Another Case Where Your Have Not Connected To Any Device
-//                else {
-////                    Some More Cases Where Your Have Not Connected To Any Device
-////                    Intent intent = new Intent(this, DeviceListActivity.class);
-////                    startActivity(intent);
-////                    Some Code To Transmit As A Client
-//
-//
-//
-//                }
-//
-//            }
-//        });
+
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==REQUEST_ENABLE_BT) {
-//            if(resultCode==RESULT_OK) {
-//
-//            }
-//        }
-//    }
 public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //    if(D) Log.d(TAG, "onActivityResult " + resultCode);
     switch (requestCode) {
@@ -351,22 +315,9 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                     Intent devices_intent = new Intent(this, DeviceListActivity.class);
                     startActivityForResult(devices_intent, REQUEST_CONNECT_DEVICE);
 
-//                    Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-//TODO: Show Devices in another activity to connect to a device
-// If there are paired devices
-//                    if (pairedDevices.size() > 0) {
-//                        // Loop through paired devices
-//                        for (BluetoothDevice device : pairedDevices) {
-//                            // Add the name and address to an array adapter to show in a ListView
-//                            mArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-//                        }
-//                    }
-
                 }
 
-//                if(mBluetoothAdapter.onActivityResult()){
-//
-//                }
+
 
         }
         return super.onOptionsItemSelected(item);
