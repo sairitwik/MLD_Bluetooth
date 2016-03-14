@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     SeekBar seekBar;
     TextView tvRating;
-    Button btnSend;
+//    Button btnSend;
 
     public Handler mHandler = new Handler() {
         @Override

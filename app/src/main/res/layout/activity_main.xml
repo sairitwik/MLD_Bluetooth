@@ -14,26 +14,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.axlevisu.vgrdimmercontrol.MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Load 1"
-        android:textAllCaps="true"
-        android:layout_marginLeft="20dp"
-        android:textSize="24sp"
-        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-    <Button
-        android:id="@+id/loadButton1"
-        android:layout_marginLeft="14dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="send"
-        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load 1"
+            android:textAllCaps="true"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="24sp"
+            />
     <TextView
         android:id="@+id/loadText1"
         android:layout_marginRight="14dp"
