@@ -61,11 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 case SEND_STRING:
                     ConnectedThread connectionThread = new ConnectedThread(
                             (BluetoothSocket) msg.obj);
-                    tvRating = (TextView) findViewById(R.id.loadText1);
-                    String s = tvRating.getText().toString();
+                    seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
+                    String s = String.valueOf(seekBar.getProgress());
                     int intvalue = Integer.parseInt(s);
                     String hexvalue = Integer.toHexString(intvalue);
                     connectionThread.write(hexvalue.getBytes());
+                    tvRating = (TextView) findViewById(R.id.loadText1);
+                    tvRating.setText(s);
                     break;
 //                    connectionThread.cancel();
 //                case MESSAGE_READ:
@@ -135,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
     private void manageConnectedSocket(BluetoothSocket mSocket)
     {   final BluetoothSocket mmSocket = mSocket;
         mHandler.obtainMessage(SUCCESS_CONNECT, mSocket).sendToTarget();
-        btnSend = (Button) findViewById(R.id.loadButton1);
-        btnSend.setOnClickListener(new View.OnClickListener() {
+//        btnSend = (Button) findViewById(R.id.loadButton1);
+        seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onClick(View v) {//TODO: Change it to SeekListener
-
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (mBluetoothAdapter == null) {
                     // Device does not support Bluetooth
                     Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
@@ -157,9 +159,42 @@ public class MainActivity extends AppCompatActivity {
                     mHandler.obtainMessage(SEND_STRING, mmSocket).sendToTarget();
 
                 }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
         });
+//                btnSend.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {//TODO: Change it to SeekListener
+//
+//                        if (mBluetoothAdapter == null) {
+//                            // Device does not support Bluetooth
+//                            Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                        if (!mBluetoothAdapter.isEnabled()) {
+//                            Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
+//                        }
+//                        //                    Another Case Where Your Have Not Connected To Any Device
+//                        else {
+////                    Some More Cases Where Your Have Not Connected To Any Device
+////                    Intent intent = new Intent(this, DeviceListActivity.class);
+////                    startActivity(intent);
+////                    Some Code To Transmit As A Client
+//                            mHandler.obtainMessage(SEND_STRING, mmSocket).sendToTarget();
+//
+//                        }
+//
+//                    }
+//                });
 
     }
 
