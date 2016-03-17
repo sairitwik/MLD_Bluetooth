@@ -9,10 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.bluetooth.BluetoothAdapter;
@@ -20,9 +16,9 @@ import android.bluetooth.BluetoothDevice;
 import android.widget.Toast;
 
 import java.io.IOException;
-//import java.util.Set;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.util.UUID;
 
 
@@ -37,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
     private  ConnectThread mConnectThread = null;
     private BluetoothDevice mDevice = null;
 
-
     SeekBar seekBar;
     TextView tvRating;
+    SeekBar seekBar1;
+    TextView tvRating1;
+    SeekBar seekBar2;
+    TextView tvRating2;
+    SeekBar seekBar3;
+    TextView tvRating3;
 //    Button btnSend;
 
     public Handler mHandler = new Handler() {
@@ -51,22 +52,46 @@ public class MainActivity extends AppCompatActivity {
                     // DO something
                     ConnectedThread connectedThread = new ConnectedThread(
                             (BluetoothSocket) msg.obj);
-
                     if(connectedThread!=null){Toast.makeText(getApplicationContext(), "CONNECTED", Toast.LENGTH_SHORT).show();}
                     else{Toast.makeText(getApplicationContext(), "CONNECTION FAILED", Toast.LENGTH_SHORT).show();}
-//                    tvRating = (TextView) findViewById(R.id.loadText1);
-//                    String s = tvRating.getText().toString();
+//                    tvRating1 = (TextView) findViewById(R.id.loadText1);
+//                    String s = tvRating1.getText().toString();
 //                    connectedThread.write(s.getBytes());
                     break;
                 case SEND_STRING:
                     ConnectedThread connectionThread = new ConnectedThread(
                             (BluetoothSocket) msg.obj);
-                    seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
+                    int load = (int)msg.arg1;
+                    switch (load){
+                        case 1:
+                            seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
+                            tvRating = (TextView) findViewById(R.id.loadText1);
+                            break;
+                        case 2:
+                            seekBar = (SeekBar) findViewById(R.id.loadSeekBar2);
+                            tvRating = (TextView) findViewById(R.id.loadText2);
+                            break;
+                        case 3:
+                            seekBar = (SeekBar) findViewById(R.id.loadSeekBar3);
+                            tvRating = (TextView) findViewById(R.id.loadText3);
+                            break;
+                        default:
+                            seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
+                            tvRating = (TextView) findViewById(R.id.loadText1);
+                            break;
+                    }
+
                     String s = String.valueOf(seekBar.getProgress());
                     int intvalue = Integer.parseInt(s);
-                    String hexvalue = Integer.toHexString(intvalue);
-                    connectionThread.write(hexvalue.getBytes());
-                    tvRating = (TextView) findViewById(R.id.loadText1);
+                    int minutes = 0;
+                    int hours =0;
+                    intvalue = intvalue + 16*load;
+                    int message = hours*65536 + minutes*256 + intvalue;
+                    byte[] bytes = ByteBuffer.allocate(3).putInt(message).array();
+//                    String hexvalue = Integer.toHexString(intvalue);
+//                    connectionThread.write(hexvalue.getBytes());
+//                    connectionThread.write(s.getBytes());
+                    connectionThread.write(bytes);
                     tvRating.setText(s);
                     break;
 //                    connectionThread.cancel();
@@ -137,11 +162,13 @@ public class MainActivity extends AppCompatActivity {
     private void manageConnectedSocket(BluetoothSocket mSocket)
     {   final BluetoothSocket mmSocket = mSocket;
         mHandler.obtainMessage(SUCCESS_CONNECT, mSocket).sendToTarget();
-//        btnSend = (Button) findViewById(R.id.loadButton1);
-        seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        seekBar1 = (SeekBar) findViewById(R.id.loadSeekBar1);
+        seekBar2 = (SeekBar) findViewById(R.id.loadSeekBar2);
+        seekBar3 = (SeekBar) findViewById(R.id.loadSeekBar3);
+        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar1, int progress, boolean fromUser) {
                 if (mBluetoothAdapter == null) {
                     // Device does not support Bluetooth
                     Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
@@ -150,51 +177,73 @@ public class MainActivity extends AppCompatActivity {
                 if (!mBluetoothAdapter.isEnabled()) {
                     Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
                 }
-                //                    Another Case Where Your Have Not Connected To Any Device
                 else {
-//                    Some More Cases Where Your Have Not Connected To Any Device
-//                    Intent intent = new Intent(this, DeviceListActivity.class);
-//                    startActivity(intent);
-//                    Some Code To Transmit As A Client
-                    mHandler.obtainMessage(SEND_STRING, mmSocket).sendToTarget();
-
+                    mHandler.obtainMessage(SEND_STRING, 1, 1, mmSocket).sendToTarget();
                 }
             }
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar1) {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar1) {
 
             }
 
         });
-//                btnSend.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {//TODO: Change it to SeekListener
-//
-//                        if (mBluetoothAdapter == null) {
-//                            // Device does not support Bluetooth
-//                            Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                        if (!mBluetoothAdapter.isEnabled()) {
-//                            Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
-//                        }
-//                        //                    Another Case Where Your Have Not Connected To Any Device
-//                        else {
-////                    Some More Cases Where Your Have Not Connected To Any Device
-////                    Intent intent = new Intent(this, DeviceListActivity.class);
-////                    startActivity(intent);
-////                    Some Code To Transmit As A Client
-//                            mHandler.obtainMessage(SEND_STRING, mmSocket).sendToTarget();
-//
-//                        }
-//
-//                    }
-//                });
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar2, int progress, boolean fromUser) {
+                if (mBluetoothAdapter == null) {
+                    // Device does not support Bluetooth
+                    Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
+
+                }
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mHandler.obtainMessage(SEND_STRING, 2, 2, mmSocket).sendToTarget();
+                }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar2) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar2) {
+
+            }
+
+        });
+        seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar3, int progress, boolean fromUser) {
+                if (mBluetoothAdapter == null) {
+                    // Device does not support Bluetooth
+                    Toast.makeText(getApplicationContext(), "DEVICE DOES NOT SUPPORT BLUETOOTH ", Toast.LENGTH_SHORT).show();
+
+                }
+                if (!mBluetoothAdapter.isEnabled()) {
+                    Toast.makeText(getApplicationContext(), "PLEASE ENABLE BLUETOOTH", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mHandler.obtainMessage(SEND_STRING, 3, 3, mmSocket).sendToTarget();
+                }
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar3) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar3) {
+
+            }
+
+        });
 
     }
 
@@ -270,21 +319,57 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initViews() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        tvRating = (TextView) findViewById(R.id.loadText1);
-        seekBar = (SeekBar) findViewById(R.id.loadSeekBar1);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        tvRating1 = (TextView) findViewById(R.id.loadText1);
+        seekBar1 = (SeekBar) findViewById(R.id.loadSeekBar1);
+        tvRating2 = (TextView) findViewById(R.id.loadText2);
+        seekBar2 = (SeekBar) findViewById(R.id.loadSeekBar2);
+        tvRating3 = (TextView) findViewById(R.id.loadText3);
+        seekBar3 = (SeekBar) findViewById(R.id.loadSeekBar3);
+        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvRating.setText(String.valueOf(progress));
+            public void onProgressChanged(SeekBar seekBar1, int progress, boolean fromUser) {
+                tvRating1.setText(String.valueOf(progress));
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+            public void onStartTrackingTouch(SeekBar seekBar1) {
 
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar1) {
+
+            }
+        });
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar2, int progress, boolean fromUser) {
+                tvRating2.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar2) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar2) {
+
+            }
+        });
+        seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar3, int progress, boolean fromUser) {
+                tvRating3.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar3) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar3) {
 
             }
         });
@@ -300,28 +385,22 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 // Get the device MAC address
                 String address = data.getExtras()
                         .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
-                // Get the BLuetoothDevice object
                 mDevice = mBluetoothAdapter.getRemoteDevice(address);
                 if(mDevice!=null){
                     mConnectThread = new ConnectThread(mDevice);
                     mConnectThread.start();
                 }
-                // Attempt to connect to the device
-//                mChatService.connect(device);
+
             }
             break;
         case REQUEST_ENABLE_BT:
             // When the request to enable Bluetooth returns
             if (resultCode == Activity.RESULT_OK) {
-                // Bluetooth is now enabled, so set up a chat session
-//                setupChat();
 
                 Intent devices_intent = new Intent(this, DeviceListActivity.class);
                 startActivityForResult(devices_intent, REQUEST_CONNECT_DEVICE);
 
             } else {
-                // User did not enable Bluetooth or an error occured
-//                Log.d(TAG, "BT not enabled");
                 Toast.makeText(this, R.string.bt_not_enabled_leaving, Toast.LENGTH_SHORT).show();
                 finish();
             }

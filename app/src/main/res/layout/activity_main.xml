@@ -18,6 +18,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         >
 
         <TextView
@@ -46,6 +47,75 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:max="15"
-        android:progress="0"/>
+        android:progress="0"
+        android:padding="10dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load 2"
+            android:textAllCaps="true"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="24sp"
+            />
+    <TextView
+        android:id="@+id/loadText2"
+        android:layout_marginRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="0"
+        android:textSize="22sp"
+        android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <SeekBar
+        android:id="@+id/loadSeekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:max="15"
+        android:progress="0"
+        android:padding="10dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load 3"
+            android:textAllCaps="true"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="24sp"
+            />
+    <TextView
+        android:id="@+id/loadText3"
+        android:layout_marginRight="14dp"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="0"
+        android:textSize="22sp"
+        android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <SeekBar
+        android:id="@+id/loadSeekBar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:max="15"
+        android:progress="0"
+        android:padding="10dp"/>
 </LinearLayout>
 </ScrollView>
