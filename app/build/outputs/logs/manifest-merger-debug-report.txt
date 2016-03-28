@@ -30,6 +30,18 @@ MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/
 MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /home/axlevisu/Documents/VGRDimmerControl/app/src/main/AndroidManifest.xml:9:9-41
 	android:supportsRtl
@@ -76,6 +88,20 @@ MERGED from [com.android.support:animated-vector-drawable:23.2.0] /home/axlevisu
 MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:5:5-43
 MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.2.0] /home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/AndroidManifest.xml:23:9-75

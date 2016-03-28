@@ -82,19 +82,16 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     String s = String.valueOf(seekBar.getProgress());
-                    int intvalue = Integer.parseInt(s);
+//                    int intvalue = Integer.parseInt(s);
+                    int intvalue = seekBar.getProgress();
+                    intvalue = intvalue + 16*load;
                     int minutes = 0;
                     int hours =0;
-                    intvalue = intvalue + 16*load;
                     int message = hours*65536 + minutes*256 + intvalue;
-                    byte[] bytes = ByteBuffer.allocate(3).putInt(message).array();
-//                    String hexvalue = Integer.toHexString(intvalue);
-//                    connectionThread.write(hexvalue.getBytes());
-//                    connectionThread.write(s.getBytes());
-                    connectionThread.write(bytes);
+                    String s_g =Character.toString ((char) message);
+                    connectionThread.write(s_g.getBytes());
                     tvRating.setText(s);
                     break;
-//                    connectionThread.cancel();
 //                case MESSAGE_READ:
 //                    byte[] readBuf = (byte[]) msg.obj;
 //                    String string = new String(readBuf);
