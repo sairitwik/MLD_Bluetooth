@@ -28,12 +28,12 @@
         "source": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/notification_media_cancel_action.xml"
     },
     {
-        "merged": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/res/layout/design_navigation_menu.xml"
-    },
-    {
         "merged": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
         "source": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/res/layout/design_navigation_menu.xml"
     },
     {
         "merged": "/home/axlevisu/Documents/VGRDimmerControl/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",

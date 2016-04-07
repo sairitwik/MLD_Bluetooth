@@ -153,9 +153,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) { }
         }
     }
-//    public void convert_to_hex(){
-//
-//    }
+
     private void manageConnectedSocket(BluetoothSocket mSocket)
     {   final BluetoothSocket mmSocket = mSocket;
         mHandler.obtainMessage(SUCCESS_CONNECT, mSocket).sendToTarget();

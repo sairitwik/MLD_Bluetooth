@@ -31,7 +31,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.axlevisu.vgrdimmercontrol.DeviceListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 
 </manifest>

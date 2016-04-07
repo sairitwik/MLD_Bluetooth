@@ -14,7 +14,8 @@
             android:id="@+id/input_hour"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="HH" />
+            android:hint="HH"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -27,7 +28,8 @@
             android:id="@+id/input_minute"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="MM" />
+            android:hint="MM"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -40,7 +42,8 @@
             android:id="@+id/input_speed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Speed" />
+            android:hint="Speed"
+            android:inputType="number"/>
     </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>
