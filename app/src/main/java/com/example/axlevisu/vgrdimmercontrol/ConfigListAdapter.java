@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
     private ArrayList<Configuration> items;
     private int layoutResourceId;
     private Context context;
-
+    private ConfigurationHolder holder;
     public ConfigListAdapter(Context context, int layoutResourceId, ArrayList<Configuration> items){
         super(context, layoutResourceId, items);
         this.layoutResourceId = layoutResourceId;
@@ -32,9 +33,9 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
 
     public static class ConfigurationHolder{
         Configuration configuration;
-        TextView hours;
-        TextView minutes;
-        TextView speed;
+        EditText hours;
+        EditText minutes;
+        EditText speed;
     }
 
     @Override
@@ -46,11 +47,21 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
         row = inflater.inflate(layoutResourceId, parent, false);
 
         holder = new ConfigurationHolder();
-        holder.configuration = items.get(position);
-        holder.hours = (TextView)row.findViewById(R.id.input_hour);
-        holder.minutes = (TextView)row.findViewById(R.id.input_minute);
-        holder.speed = (TextView)row.findViewById(R.id.input_speed);
 
+        holder.configuration = items.get(position);
+        int i = holder.configuration.getSpeed();
+//        Toast.makeText(getContext(),"speed: " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+        holder.hours = (EditText)row.findViewById(R.id.input_hour);
+        holder.minutes = (EditText)row.findViewById(R.id.input_minute);
+        holder.speed = (EditText)row.findViewById(R.id.input_speed);
+        if(row != null && holder.configuration !=null){
+            holder.hours.setText(String.valueOf(holder.configuration.getHours()));}
+        if(row != null && holder.configuration !=null){
+            holder.minutes.setText(String.valueOf(holder.configuration.getMinutes()));}
+        if(row != null && holder.configuration !=null){
+            holder.speed.setText(String.valueOf(holder.configuration.getSpeed()));}
+//        holder.minutes.setText(holder.configuration.getMinutes());
+//        holder.speed.setText(holder.configuration.getSpeed());
         setTextChangeListener(holder);
 
         row.setTag(holder);
@@ -71,12 +82,17 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(s.length()==0){
+                    holder.configuration.setHours(0);
+                }
+                else{
+                    holder.configuration.setHours(Integer.parseInt(s.toString()));
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+//                notifyDataSetChanged();
             }
         });
         holder.minutes.addTextChangedListener(new TextWatcher() {
@@ -92,12 +108,17 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(s.length()==0){
+                    holder.configuration.setMinutes(0);
+                }
+                else{
+                    holder.configuration.setMinutes(Integer.parseInt(s.toString()));
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+//                notifyDataSetChanged();
             }
         });
         holder.speed.addTextChangedListener(new TextWatcher() {
@@ -113,12 +134,17 @@ public class ConfigListAdapter extends ArrayAdapter<Configuration> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(s.length()==0){
+                    holder.configuration.setSpeed(0);
+                }
+                else{
+                    holder.configuration.setSpeed(Integer.parseInt(s.toString()));
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+//                notifyDataSetChanged();
             }
         });
     }

@@ -25,6 +25,10 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     private final static int REQUEST_ENABLE_BT = 2;
+    private final static int SETTINGS_DEVICE_RESULT = 6;
+//    private final static int RESULT_MAIN_OK = 6;
+    public static String DEVICE_ADDRESS = "device_address";
+
     private static final int REQUEST_CONNECT_DEVICE = 1;
 //    private static final int MESSAGE_READ =3;
     private static final int SUCCESS_CONNECT =4;
@@ -132,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException connectException) {
                 // Unable to connect; close the socket and get out
                 try {
-                    mmSocket.close();
+//                    Toast.makeText(getApplicationContext(), "CONNECTION FAILED!", Toast.LENGTH_SHORT).show();
+                    mmSocket.connect();
                 } catch (IOException closeException) { }
                 return;
             }
@@ -381,11 +386,25 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 String address = data.getExtras()
                         .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
                 mDevice = mBluetoothAdapter.getRemoteDevice(address);
+                if(mConnectThread != null){mConnectThread.cancel();}
                 if(mDevice!=null){
                     mConnectThread = new ConnectThread(mDevice);
                     mConnectThread.start();
                 }
 
+            }
+            break;
+        case SETTINGS_DEVICE_RESULT:
+            if (resultCode == Activity.RESULT_OK) {
+                String address = data.getExtras()
+                        .getString(SettingsActivity.EXTRA_DEVICE_ADDRESS);
+                mDevice = mBluetoothAdapter.getRemoteDevice(address);
+                if(mConnectThread != null){mConnectThread.cancel();}
+//                Toast.makeText(getApplicationContext(), "CONNECTED Maybe?", Toast.LENGTH_SHORT).show();
+                if(mDevice!=null){
+                    mConnectThread = new ConnectThread(mDevice);
+                    mConnectThread.start();
+                }
             }
             break;
         case REQUEST_ENABLE_BT:
@@ -407,7 +426,12 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (item.getItemId()) {
             case R.id.item_settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
+                if(mConnectThread != null){mConnectThread.cancel();}
+                if (mDevice !=null){
+                intent.putExtra(DEVICE_ADDRESS, mDevice.getAddress());}
+//                if(mConnectThread != null){mConnectThread.cancel();}
+//                setResult(Activity.RESULT_OK, intent);
+                startActivityForResult(intent, SETTINGS_DEVICE_RESULT);
                 break;
             case R.id.device_connect:
                 if (mBluetoothAdapter == null) {

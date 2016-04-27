@@ -65,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/loadList1"
                     android:descendantFocusability="beforeDescendants"
+                    android:paddingBottom="8dp"
                     >
 
                 </ListView>
@@ -119,7 +120,8 @@
                 <ListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/loadList2">
+                    android:id="@+id/loadList2"
+                    android:paddingBottom="8dp">
 
                 </ListView>
 
@@ -176,7 +178,8 @@
                 <ListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/loadList3">
+                    android:id="@+id/loadList3"
+                    android:paddingBottom="8dp">
 
                 </ListView>
 

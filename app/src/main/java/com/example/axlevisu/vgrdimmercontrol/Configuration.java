@@ -17,7 +17,7 @@ public class Configuration implements Serializable {
         this.setSpeed(speed);
     }
      public void setHours(int h){
-         this.hours = h%128;
+         this.hours = h%24;
      }
      public void setMinutes(int m){
          this.minutes = m%60;
